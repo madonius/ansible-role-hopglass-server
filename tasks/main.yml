@@ -1,0 +1,9 @@
+---
+- name: Install the needed packages
+  include: apt.yml
+
+- name: Install hopglass
+  include: hopglass.yml
+
+- name: Configure hopglass
+  include: hopglass_configuration.yml

@@ -1,0 +1,8 @@
+- name: Install the packages
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - apt-transport-https
+    - curl
+    - git
+    - lsb-release

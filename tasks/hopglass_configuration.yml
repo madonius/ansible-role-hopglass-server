@@ -1,0 +1,44 @@
+---
+- name: Create the config directory
+  file:
+    path: /etc/hopglass-server/{{ hopglass_site }}
+    state: directory
+    owner: hopglass
+    group: hopglass
+
+- name: Configure the server
+  copy:
+    src: "{{ hopglass_config_file }}"
+    dest: "/etc/hopglass-server/{{ hopglass_site }}/config.json"
+    owner: hopglass
+    group: hopglass
+
+- name: Configure the aliases
+  copy:
+    src: "{{ hopglass_aliases_file }}"
+    dest: "/etc/hopglass-server/{{ hopglass_site }}/aliases.json"
+    owner: hopglass
+    group: hopglass
+  when: hopglass_aliases_file is defined
+
+- name: Install the hopglass service
+  template:
+    src: hopglass-server@.service
+    dest: /lib/systemd/system/hopglass-server@.service
+  notify: Reload systemd
+
+- name: Enable and start the service for the site
+  systemd:
+    name: hopglass-server@{{ hopglass_site }}
+    state: started
+    enabled: true
+
+- name: Configure the sysctl parameters for hopglass
+  sysctl:
+    name: {{ item[0] }}
+    value: {{ item[1] }}
+  with_items:
+  - { "net.core.rmem_default", 4194304 }
+  - { "net.core.wmem_default", 4194304 }
+  - ( "net.core.rmem_max", 16777216 }
+  - { "net.core.wmem_max", 16777216 }
