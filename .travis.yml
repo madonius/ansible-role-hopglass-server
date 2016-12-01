@@ -32,14 +32,8 @@ script:
     | grep -q 'changed=0.*failed=0'
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
-  # Ensure Node.js is installed.
-  - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm which node'
-  - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm node -v'
 
-  # Ensure npm packages are installed globally.
-  - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm bash --login -c "npm list -g --depth=0 jslint"'
-  - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm bash --login -c "npm list -g --depth=0 node-sass"'
-  - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm bash --login -c "npm list -g --depth=0 yo"'
+  - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm bash --login -c "systemctl status hopglass-server@default"'
 
 notifications:
 webhooks: https://galaxy.ansible.com/api/v1/notifications/
