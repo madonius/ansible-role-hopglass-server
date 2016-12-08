@@ -3,7 +3,7 @@ services: docker
 
 env:
   - distro: ubuntu1204
-    init: /usr/lib/systemd/systemd
+    init: /sbin/init
     run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
 
 before_install:
