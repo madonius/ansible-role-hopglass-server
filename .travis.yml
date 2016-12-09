@@ -2,7 +2,7 @@
 services: docker
 
 env:
-  - distro: ubuntu1204
+  - distro: debian8
     init: /sbin/init
     run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
 
