@@ -3,7 +3,7 @@ services: docker
 
 env:
   - distro: debian8
-    init: /sbin/init
+    init: /lib/systemd/systemd
     run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
 
 before_install:
