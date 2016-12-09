@@ -2,4 +2,4 @@
 - hosts: localhost
   remote_user: root
   roles:
-  - { role: hopglass-server, hopglass_config_file: "testconfig.json" }
+  - { role: madonius.hopglass-server, hopglass_config_file: "testconfig.json" }
