@@ -35,8 +35,8 @@
 
 - name: Configure the sysctl parameters for hopglass
   sysctl:
-    name: "{{ item[0] }}"
-    value: "{{ item[1] }}"
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
   with_items:
   - { name: "net.core.rmem_default", value: 4194304 }
   - { name: "net.core.wmem_default", value: 4194304 }
