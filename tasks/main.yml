@@ -3,7 +3,7 @@
   include: apt.yml
 
 - name: Install hopglass
-  include: hopglass.yml
+  include: hopglass_installation.yml
 
 - name: Configure hopglass
   include: hopglass_configuration.yml
