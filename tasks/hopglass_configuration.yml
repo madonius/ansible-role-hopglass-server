@@ -1,7 +1,7 @@
 ---
 - name: Create the config directory
   file:
-    path: /etc/hopglass-server/{{ hopglass_site }}
+    path: "/etc/hopglass-server/{{ hopglass_site }}"
     state: directory
     owner: hopglass
     group: hopglass
@@ -29,14 +29,14 @@
 
 - name: Enable and start the service for the site
   systemd:
-    name: hopglass-server@{{ hopglass_site }}
+    name: "hopglass-server@{{ hopglass_site }}"
     state: started
     enabled: true
 
 - name: Configure the sysctl parameters for hopglass
   sysctl:
-    name: {{ item[0] }}
-    value: {{ item[1] }}
+    name: "{{ item[0] }}"
+    value: "{{ item[1] }}"
   with_items:
   - { "net.core.rmem_default", 4194304 }
   - { "net.core.wmem_default", 4194304 }
