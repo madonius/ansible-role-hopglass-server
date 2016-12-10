@@ -1,6 +1,9 @@
 Hopglass server
 =========
 
+[![Build Status](https://travis-ci.org/madonius/ansible-role-hopglass-server.svg?branch=master)](https://travis-ci.org/madonius/ansible-role-hopglass-server#)
+
+
 Hopglass server installation for Debian
 
 Requirements
