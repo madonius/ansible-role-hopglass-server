@@ -37,9 +37,9 @@
   sysctl:
     name: "{{ item.name }}"
     value: "{{ item.value }}"
+  ignore_erros: yes
   with_items:
   - { name: "net.core.rmem_default", value: 4194304 }
   - { name: "net.core.wmem_default", value: 4194304 }
   - { name: "net.core.rmem_max", value: 16777216 }
   - { name: "net.core.wmem_max", value: 16777216 }
-  ignore_erros: yes
